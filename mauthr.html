@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>THR Lebaran 1447 H - Selamat Idul Fitri</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #0a3a2a 0%, #0c4e35 50%, #0a3a2a 100%);
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        /* Background Lebaran - Bintang, Ketupat, Unta, Bulan */
+        .bg-lebaran {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: #FFD966;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+            box-shadow: 0 0 8px rgba(255, 217, 0, 0.8);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .moon-big {
+            position: absolute;
+            font-size: 7rem;
+            top: 20px;
+            right: 20px;
+            filter: drop-shadow(0 0 20px #ffd966);
+            animation: moonGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes moonGlow {
+            0%, 100% { filter: drop-shadow(0 0 15px #ffd966); transform: rotate(0deg); }
+            50% { filter: drop-shadow(0 0 30px #ffaa33); transform: rotate(5deg); }
+        }
+
+        .camel-walk {
+            position: absolute;
+            font-size: 3rem;
+            bottom: 50px;
+            left: -100px;
+            opacity: 0.5;
+            animation: camelWalk 45s linear infinite;
+        }
+
+        @keyframes camelWalk {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(calc(100vw + 100px)); }
+        }
+
+        .ketupat-float {
+            position: absolute;
+            font-size: 2.2rem;
+            opacity: 0.4;
+            animation: floatSlow 8s ease-in-out infinite;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .ornament {
+            position: absolute;
+            font-size: 1.8rem;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* Main Card */
+        .lebaran-card {
+            max-width: 550px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 250, 235, 0.98);
+            backdrop-filter: blur(8px);
+            border-radius: 60px 60px 60px 40px;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.4), 0 0 0 5px #ffd966, 0 0 0 12px #e6a017;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* Header */
+        .header-lebaran {
+            background: linear-gradient(135deg, #2b6e3c, #1f5430);
+            padding: 30px 20px 25px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+        }
+
+        .header-lebaran h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffefb9;
+            text-shadow: 3px 3px 0 #8b691b;
+        }
+
+        .ketupat-icon {
+            font-size: 3rem;
+            filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.3));
+            display: inline-block;
+            margin: 0 8px;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 25px 25px 20px;
+            background: #fffaf0;
+            border-bottom: 2px solid #ffcd7e;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            font-weight: 700;
+            color: #5a3a1a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .input-group label i {
+            color: #e68a2e;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 18px;
+            border: 2px solid #f3cd81;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            background: white;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #ffa500;
+            box-shadow: 0 0 0 3px rgba(255,165,0,0.2);
+        }
+
+        /* Slider Puasa */
+        .puasa-range {
+            background: #fff3e3;
+            padding: 12px 18px;
+            border-radius: 50px;
+        }
+
+        .puasa-range label {
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin: 10px 0;
+            -webkit-appearance: none;
+            background: linear-gradient(90deg, #ffb347, #e5942e);
+            height: 8px;
+            border-radius: 10px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: #ffd966;
+            border-radius: 50%;
+            border: 2px solid #b45f1b;
+            cursor: pointer;
+        }
+
+        #puasaValue {
+            font-weight: 800;
+            background: #c2822c;
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 40px;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        /* Tombol Mulai */
+        .start-btn {
+            background: linear-gradient(95deg, #f0a34b, #e27c2c);
+            border: none;
+            width: 100%;
+            padding: 14px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border-radius: 60px;
+            color: white;
+            cursor: pointer;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 0 #91471a;
+            transition: 0.07s linear;
+        }
+
+        .start-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 3px 0 #91471a;
+        }
+
+        /* Area Klik THR */
+        .click-area {
+            background: #fef0de;
+            padding: 25px 25px 35px;
+            text-align: center;
+            display: none;
+        }
+
+        .thr-box {
+            background: radial-gradient(circle at 30% 30%, #fff2dd, #ffdead);
+            border-radius: 70px;
+            padding: 25px 16px;
+            cursor: pointer;
+            box-shadow: inset 0 -8px 0 #cb853c, 0 15px 25px rgba(0,0,0,0.25);
+            transition: 0.05s linear;
+            border: 2px solid #f8c471;
+        }
+
+        .thr-box:active {
+            transform: scale(0.97);
+            box-shadow: inset 0 -3px 0 #cb853c;
+        }
+
+        .thr-icon {
+            font-size: 4.5rem;
+            color: #e67e22;
+        }
+
+        .thr-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #b45f1b;
+            margin-top: 8px;
+        }
+
+        .click-counter {
+            margin-top: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: #422c14;
+            display: inline-block;
+            padding: 6px 28px;
+            border-radius: 60px;
+            color: #ffdd99;
+            font-family: monospace;
+        }
+
+        .status-message {
+            background: #eedcbb;
+            border-radius: 40px;
+            padding: 12px;
+            margin-top: 20px;
+            font-weight: 600;
+            color: #a45d2a;
+            font-size: 0.85rem;
+        }
+
+        /* Final Area - Gambar Prank + Chat WA */
+        .final-area {
+            text-align: center;
+            padding: 25px 20px 35px;
+            background: #1f2a1b;
+            border-top: 6px ridge #ffc857;
+            display: none;
+        }
+
+        .final-area img {
+            max-width: 100%;
+            width: 260px;
+            border-radius: 35px;
+            box-shadow: 0 15px 25px black;
+            border: 4px solid #ffcd7e;
+            animation: popIn 0.4s ease-out;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .whatsapp-button {
+            background: #25d366;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 20px 0 12px;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.2s;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.02);
+            background: #128C7E;
+        }
+
+        .reset-btn {
+            background: #5c411f;
+            border: none;
+            color: #ffefb9;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        /* Random Quote Box */
+        .quote-box {
+            background: linear-gradient(135deg, #fff5e6, #ffefdb);
+            border-radius: 35px;
+            padding: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 2px solid #ffcd7e;
+        }
+
+        .pantun-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #7a4a1a;
+            font-style: italic;
+        }
+
+        .maaf-text {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #b45f1b;
+            font-weight: 600;
+            border-top: 1px dashed #f3cd81;
+            padding-top: 10px;
+        }
+
+        .footer {
+            background: #2c2b1f;
+            padding: 14px;
+            text-align: center;
+            color: #ffdd99;
+            font-size: 0.75rem;
+        }
+
+        .footer strong {
+            color: #ffb347;
+        }
+
+        .disable-clicks {
+            pointer-events: none;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Background Lebaran Penuh -->
+<div class="bg-lebaran">
+    <div class="moon-big">🌙</div>
+    <div class="camel-walk">🐪 🐫</div>
+    <!-- Bintang -->
+    <div class="star" style="width: 5px; height: 5px; top: 15%; left: 10%;"></div>
+    <div class="star" style="width: 3px; height: 3px; top: 25%; left: 85%; animation-delay: 1s;"></div>
+    <div class="star" style="width: 4px; height: 4px; top: 45%; left: 20%; animation-delay: 0.5s;"></div>
+    <div class="star" style="width: 6px; height: 6px; top: 70%; left: 75%; animation-delay: 1.8s;"></div>
+    <div class="star" style="width: 4px; height: 4px; top: 82%; left: 40%; animation-delay: 2.2s;"></div>
+    <div class="star" style="width: 5px; height: 5px; top: 55%; left: 92%;"></div>
+    <!-- Ketupat -->
+    <div class="ketupat-float" style="bottom: 10%; left: 5%;">🎋</div>
+    <div class="ketupat-float" style="top: 20%; left: 85%; animation-duration: 10s;">🎋</div>
+    <div class="ketupat-float" style="bottom: 30%; right: 3%; animation-duration: 7s;">🎋</div>
+    <div class="ketupat-float" style="top: 60%; left: 2%; animation-duration: 9s;">🌙✨</div>
+    <div class="ornament" style="top: 85%; right: 10%;">⭐</div>
+    <div class="ornament" style="top: 40%; left: 88%;">🐪</div>
+</div>
+
+<div class="lebaran-card" id="prankCard">
+    <div class="header-lebaran">
+        <span class="ketupat-icon">🎋</span>
+        <h1>🌙 THR LEBARAN 1447 H 🌙</h1>
+        <span class="ketupat-icon">🎋</span>
+        <div style="margin-top: 8px;">
+            <i class="fas fa-camel" style="color: #ffdd99;"></i>
+            <i class="fas fa-moon" style="color: #ffdd99; margin: 0 8px;"></i>
+            <i class="fas fa-star" style="color: #ffdd99;"></i>
+        </div>
+    </div>
+
+    <!-- Form Identitas -->
+    <div class="form-section" id="formSection">
+        <div class="quote-box" id="quoteBox">
+            <div class="pantun-text" id="pantunText">
+                <i class="fas fa-feather-alt"></i> "Pergi haji ke tanah suci, pulangnya bawa kurma manis. Mohon maaf lahir dan batin, semoga kita semua bahagia."
+            </div>
+            <div class="maaf-text" id="maafText">
+                <i class="fas fa-heart"></i> Maafkan segala khilaf & salah, semoga THR ini menjadi berkah.
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label><i class="fas fa-user"></i> Nama Lengkap</label>
+            <input type="text" id="namaUser" placeholder="Contoh: Ahmad Fauzi">
+        </div>
+
+        <div class="input-group">
+            <label><i class="fas fa-calendar-alt"></i> Puasa ke berapa? (Ramadhan 1-30)</label>
+            <div class="puasa-range">
+                <label>🌙 Hari Puasa ke- <span id="puasaValue">15</span></label>
+                <input type="range" id="puasaSlider" min="1" max="30" value="15">
+                <div style="display: flex; justify-content: space-between; font-size: 10px;">
+                    <span>Awal</span><span>Tengah</span><span>Syawal</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="start-btn" id="startBtn">
+            <i class="fas fa-gift"></i> Buka THR Sekarang <i class="fas fa-hand-peace"></i>
+        </button>
+    </div>
+
+    <!-- Area Klik THR -->
+    <div class="click-area" id="clickArea">
+        <div class="thr-box" id="thrButton">
+            <div class="thr-icon">
+                <i class="fas fa-envelope-open-text"></i> <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <div class="thr-title">
+                💰 AMPLOP THR 💰
+            </div>
+            <div class="click-counter" id="counterDisplay">0</div>
+        </div>
+        <div class="status-message" id="statusMsg">
+            <i class="fas fa-arrow-pointer"></i> Klik amplop THR-nya! Semakin banyak klik semakin besar THR-nya...
+        </div>
+    </div>
+
+    <!-- Final Area: Gambar Prank + Tombol Chat WA -->
+    <div class="final-area" id="finalArea">
+        <img id="finalImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC_E1yj1Zxc8B9Ft0ayiouePbKUfev-kbijzIb8MkW0Q&s=10" alt="THR Prank">
+        <div style="margin-top: 15px; font-weight: bold; color:#ffd966;">
+            <i class="fas fa-camera"></i> Ups! THR-nya cuma gambar ini 😄
+        </div>
+        <button class="whatsapp-button" id="whatsappBtn">
+            <i class="fab fa-whatsapp"></i> Chat Admin Klaim THR
+            <i class="fas fa-arrow-right"></i>
+        </button>
+        <div style="font-size: 12px; color: #ffcc88; margin-bottom: 10px;">
+            📞 0823-1025-7079 • Sertakan nama & puasa ya!
+        </div>
+        <button class="reset-btn" id="resetBtn">
+            <i class="fas fa-undo-alt"></i> Coba Lagi
+        </button>
+    </div>
+
+    <div class="footer">
+        <i class="fas fa-code"></i> create by <strong>KammXploit</strong> • 🌙 Taqabbalallahu minna wa minkum 🌙
+        <br><span style="font-size: 0.7rem;">✨ Mohon maaf lahir dan batin ✨</span>
+    </div>
+</div>
+
+<script>
+    // Kumpulan Pantun & Kata Maaf Random
+    const pantunList = [
+        "🌙 Burung dara terbang melayang, hinggap di pohon jambu air. Selamat Idul Fitri kuucapkan, mohon maaf lahir dan batin tulus ikhlas.",
+        "🎋 Ketupat lebaran tersusun rapi, opor ayam siap dihidangkan. Maafkan segala salah dan hati, semoga kita selalu dalam lindungan.",
+        "🐪 Unta berjalan di padang pasir, membawa oleh-oleh kurma manis. Mohon maaf lahir dan batin, semoga hidup penuh berkah manis.",
+        "🌟 Bulan sabit tampak bersinar, bintang gemerlap di langit malam. Mohon maaf jika ada salah kata, semoga silaturahmi tetap terjaga.",
+        "🌙 Air mawar wangi semerbak, hidangan lebaran penuh rasa. Maafkan semua dosa dan salah, semoga bahagia menyertai perjalanan.",
+        "🎋 Dari timur sampai barat, semua berkumpul rayakan lebaran. Maaf lahir batin saya haturkan, semoga kita selalu dalam kebaikan.",
+        "🐪 Ada unta di gurun pasir, ada ketupat di meja makan. Kuucap maaf sepenuh hati, semoga kita selalu dalam kebaikan."
+    ];
+
+    const maafList = [
+        "🤲 Mohon maaf lahir dan batin, semoga hari kemenangan ini membawa kebahagiaan untuk kita semua.",
+        "💚 Saling memaafkan adalah pintu kebaikan. Maafkan segala khilaf yang pernah ada.",
+        "✨ Hamba yang baik adalah yang bisa memaafkan. Maafkan aku lahir dan batin ya.",
+        "🌙 Di hari yang fitri ini, aku memohon maaf atas segala salah dan dosa.",
+        "🎋 Selamat Idul Fitri, mohon maaf lahir dan batin. Semoga THR ini membawa keberkahan.",
+        "🐪 Unta saja pulang ke kampung, kita juga pasti rindu keluarga. Maafkan aku yang jauh di mata.",
+        "⭐ Bulan mulia telah berlalu, semoga amal diterima. Maaf lahir batin, semoga cinta abadi."
+    ];
+
+    // Random greeting
+    function randomGreeting() {
+        const randomPantun = pantunList[Math.floor(Math.random() * pantunList.length)];
+        const randomMaaf = maafList[Math.floor(Math.random() * maafList.length)];
+        document.getElementById('pantunText').innerHTML = `<i class="fas fa-feather-alt"></i> "${randomPantun}"`;
+        document.getElementById('maafText').innerHTML = `<i class="fas fa-heart"></i> ${randomMaaf}`;
+    }
+    randomGreeting();
+
+    // Slider Puasa
+    const puasaSlider = document.getElementById('puasaSlider');
+    const puasaValue = document.getElementById('puasaValue');
+    puasaSlider.addEventListener('input', () => {
+        puasaValue.innerText = puasaSlider.value;
+    });
+
+    // State
+    let clickCount = 0;
+    let requiredClicks = 0;
+    let isActive = false;
+    let isFinished = false;
+
+    // DOM Elements
+    const formSection = document.getElementById('formSection');
+    const clickArea = document.getElementById('clickArea');
+    const finalArea = document.getElementById('finalArea');
+    const startBtn = document.getElementById('startBtn');
+    const thrButton = document.getElementById('thrButton');
+    const counterDisplay = document.getElementById('counterDisplay');
+    const statusMsg = document.getElementById('statusMsg');
+    const resetBtn = document.getElementById('resetBtn');
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    const namaInput = document.getElementById('namaUser');
+
+    // Generate random klik (45-95 biar seru)
+    function generateRequiredClicks() {
+        return Math.floor(Math.random() * (95 - 45 + 1) + 45);
+    }
+
+    // Mulai prank klik
+    function startPrank() {
+        let nama = namaInput.value.trim();
+        if (nama === "") {
+            nama = "Sahabat Lebaran";
+            namaInput.value = "Sahabat Lebaran";
+        }
+        
+        requiredClicks = generateRequiredClicks();
+        clickCount = 0;
+        isActive = true;
+        isFinished = false;
+        
+        counterDisplay.innerText = "0";
+        const puasa = puasaSlider.value;
+        
+        statusMsg.innerHTML = `<i class="fas fa-camel"></i> Hai ${nama}, Puasa ke-${puasa}! Klik amplop THR sebanyak ${requiredClicks} kali untuk membuka hadiah spesial 🎁`;
+        
+        formSection.style.display = "none";
+        clickArea.style.display = "block";
+        finalArea.style.display = "none";
+        
+        document.getElementById('prankCard').classList.remove('disable-clicks');
+        thrButton.style.pointerEvents = "auto";
+    }
+
+    // Handle klik THR
+    function handleThrClick() {
+        if (!isActive || isFinished) return;
+        
+        clickCount++;
+        counterDisplay.innerText = clickCount;
+        
+        // Efek klik
+        thrButton.style.transform = "scale(0.96)";
+        setTimeout(() => { if(thrButton) thrButton.style.transform = ""; }, 100);
+        
+        let sisa = requiredClicks - clickCount;
+        if (sisa > 0) {
+            statusMsg.innerHTML = `<i class="fas fa-tap"></i> Sudah ${clickCount} kali klik! ${sisa} klik lagi menuju THR spesial 🐪✨`;
+        } else {
+            statusMsg.innerHTML = `<i class="fas fa-hourglass-half"></i> Proses pembukaan THR... Sebentar lagi! 🔥`;
+        }
+        
+        // Cek apakah sudah mencapai target
+        if (clickCount >= requiredClicks && !isFinished) {
+            isFinished = true;
+            isActive = false;
+            thrButton.style.pointerEvents = "none";
+            
+            // Tampilkan final area (gambar prank)
+            clickArea.style.display = "none";
+            finalArea.style.display = "block";
+            
+            // Update pesan di final dengan nama & puasa
+            let namaAkhir = namaInput.value.trim() || "Pejuang THR";
+            let puasaAkhir = puasaSlider.value;
+            const finalMsgDiv = document.querySelector('#finalArea div:first-child + div');
+            if (finalMsgDiv) {
+                finalMsgDiv.innerHTML = `<i class="fas fa-camera"></i> Ups ${namaAkhir}! THR-nya cuma gambar ini 😄<br><span style="font-size:12px;">(Puasa ke-${puasaAkhir} dari 30 hari, tetap semangat ya!)</span>`;
+            }
+            
+            // Tambahkan efek disable pada card
+            document.getElementById('prankCard').classList.add('disable-clicks');
+        }
+    }
+
+    // Reset semua
+    function fullReset() {
+        isActive = false;
+        isFinished = false;
+        clickCount = 0;
+        requiredClicks = 0;
+        
+        formSection.style.display = "block";
+        clickArea.style.display = "none";
+        finalArea.style.display = "none";
+        
+        document.getElementById('prankCard').classList.remove('disable-clicks');
+        if (counterDisplay) counterDisplay.innerText = "0";
+        
+        // Random ulang pantun biar fresh
+        randomGreeting();
+    }
+
+    // Buka WhatsApp dengan pesan otomatis
+    function openWhatsApp() {
+        let nama = namaInput.value.trim();
+        if (nama === "") nama = "Sahabat Lebaran";
+        let puasa = puasaSlider.value;
+        
+        const message = `Assalamu'alaikum, saya ingin mengklaim THR Lebaran.%0A%0A📝 Nama: ${nama}%0A🌙 Puasa ke-${puasa} (dari 30 hari)%0A%0AMohon info THR-nya, terima kasih. %0A%0A#KammXploit`;
+        const phoneNumber = "6282310257079"; // 082310257079 format internasional
+        const url = `https://wa.me/${phoneNumber}?text=${message}`;
+        window.open(url, '_blank');
+        
+        // Alert kecil (opsional)
+        const toast = document.createElement('div');
+        toast.innerText = "📱 Arahkan ke WhatsApp... Kirim pesan ya!";
+        toast.style.position = "fixed";
+        toast.style.bottom = "20px";
+        toast.style.left = "50%";
+        toast.style.transform = "translateX(-50%)";
+        toast.style.backgroundColor = "#25d366";
+        toast.style.color = "white";
+        toast.style.padding = "12px 24px";
+        toast.style.borderRadius = "50px";
+        toast.style.zIndex = "1000";
+        toast.style.fontWeight = "bold";
+        toast.style.boxShadow = "0 4px 15px black";
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2500);
+    }
+
+    // Event Listeners
+    startBtn.addEventListener('click', startPrank);
+    thrButton.addEventListener('click', handleThrClick);
+    resetBtn.addEventListener('click', fullReset);
+    whatsappBtn.addEventListener('click', openWhatsApp);
+    
+    // Enter on nama input
+    namaInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && formSection.style.display !== 'none') {
+            startPrank();
+        }
+    });
+    
+    // Tambah bintang dan ketupat ekstra
+    for(let i=0;i<20;i++) {
+        let star = document.createElement('div');
+        star.classList.add('star');
+        star.style.width = (Math.random() * 4 + 2) + 'px';
+        star.style.height = star.style.width;
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 5 + 's';
+        document.querySelector('.bg-lebaran').appendChild(star);
+    }
+    
+    // Tambah unta berjalan ekstra
+    for(let i=0;i<3;i++) {
+        let camel = document.createElement('div');
+        camel.className = 'camel-walk';
+        camel.style.position = 'absolute';
+        camel.style.fontSize = (Math.random() * 20 + 20) + 'px';
+        camel.style.bottom = (Math.random() * 40 + 10) + '%';
+        camel.style.left = (Math.random() * -200) + 'px';
+        camel.style.opacity = 0.3 + Math.random() * 0.3;
+        camel.style.animationDuration = (Math.random() * 30 + 30) + 's';
+        camel.innerHTML = Math.random() > 0.5 ? '🐪' : '🐫';
+        document.querySelector('.bg-lebaran').appendChild(camel);
+    }
+</script>
+</body>
+</html>
